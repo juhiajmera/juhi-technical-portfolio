@@ -78,8 +78,8 @@ ul.ticks{list-style:none;padding:0;margin:0;}
 ul.ticks li{position:relative;padding-left:1.5rem;margin:.45rem 0;color:#334155;font-size:.92rem;line-height:1.5;}
 ul.ticks li:before{content:"";position:absolute;left:0;top:.42rem;width:.55rem;height:.55rem;border-radius:50%;background:#14B8A6;box-shadow:0 0 0 3px #CCFBF1;}
 ul.checks li:before{content:"✓";background:none;box-shadow:none;color:#0F766E;font-weight:800;top:0;width:auto;height:auto;}
-.problem{background:#FFF8F1;border:1px solid #FDE3C8;border-left:5px solid #DD6B20;border-radius:12px;padding:1rem 1.2rem;color:#7B341E;font-size:1rem;}
-.problem b{color:#9C4221;}
+.problem{background:#F1F7FA;border:1px solid #D8E7EF;border-left:5px solid #0F766E;border-radius:12px;padding:1rem 1.2rem;color:#334155;font-size:1rem;}
+.problem b{color:#0B2545;}
 .why{background:linear-gradient(160deg,#F0FDFA,#fff);border:1px solid #99F6E4;}
 .proj-head{display:flex;align-items:center;gap:.9rem;margin:1.2rem 0 1rem;}
 .num{flex:none;width:2.6rem;height:2.6rem;border-radius:12px;background:#0B2545;color:#fff;display:grid;place-items:center;font-weight:800;font-size:1.1rem;}
@@ -140,15 +140,16 @@ html("""<div class="hero">
 <div class="eyebrow">INTERVIEW PORTFOLIO · DATA ENGINEERING, REPORTING & AI</div>
 <div class="hero-name">Juhi Ajmera</div>
 <div class="hero-role">Technical Lead — Data Engineering &amp; Reporting</div>
-<div class="hero-tags"><span>Montreal, QC</span><span>10+ years</span><span>Snowflake · Spark · SQL · Python</span><span>Power BI</span><span>Azure · Airflow · CI/CD</span><span>LLM · GitHub Copilot</span></div>
+<div class="hero-tags"><span>Python</span><span>SQL</span><span>Snowflake</span><span>Spark</span><span>Power BI</span><span>Azure</span><span>Airflow</span><span>CI/CD</span><span>LLM</span><span>GitHub Copilot</span></div>
 </div>
 <div class="kpis">
 <div class="kpi"><div class="v">10+<small>years</small></div><div class="l">Software &amp; data engineering, integration and analytics</div></div>
 <div class="kpi"><div class="v">86%<small>faster</small></div><div class="l">Install time cut from 7 h to 1 h</div></div>
-<div class="kpi"><div class="v">90<small>days</small></div><div class="l">Historical telemetry ingested &amp; validated</div></div>
+<div class="kpi"><div class="v">Unified</div><div class="l">Telemetry-to-analytics data flow</div></div>
 <div class="kpi"><div class="v">2<small>patents</small></div><div class="l">Patents</div></div>
 <div class="kpi"><div class="v">AI<small>in delivery</small></div><div class="l">LLM + GitHub Copilot</div></div>
 </div>""")
+
 
 # ---------------------------------------------------------------- Summary + career
 section("Profile", "Professional summary")
@@ -156,7 +157,7 @@ s1, s2 = st.columns([1.08, 1], gap="large")
 with s1:
     html("""<div class="card profile-card profile-summary">
       <div class="kicker">Professional profile</div>
-      <div class="summary-lead">10+ years turning complex data into reliable business insights.</div>
+      <div class="summary-lead">Turning complex data into reliable business insights.</div>
       <div class="summary-copy">Building data pipelines, integrations, analytics and reporting solutions, with a focus on quality, automation and applied AI.</div>
     </div>""")
 with s2:
@@ -178,9 +179,9 @@ DIAGRAM_DIR = BASE_DIR / "juhi_architecture_diagrams"
 
 DIAGRAM_IMAGES = {
     "1": "01-snowflake-ai-reporting.png",
-    "2": "02-insurance-claims-reporting.png",
+    "2": "02-automated-application-installer.png",
     "3": "03-predictive-maintenance.png",
-    "4": "04-deployment-ai-testing.png",
+    "4": "04-insurance-claims-reporting.png",
 }
 
 projects = {
@@ -195,7 +196,27 @@ projects = {
    stack=["Snowflake", "SQL", "Python", "Power BI", "RAG / Vector search", "Git CI/CD"],
    jd="Consistent, controlled, auditable outputs · Power BI KPIs for data quality & SLA · AI-assisted engineering",
    diagram=True),
- "2 · Insurance Claims Data & Reporting (Financial Services)": dict(
+ "2 · Automated Application Installer and Deployment Framework": dict(
+   short="Application Installer",
+   problem="Application deployments involved multiple manual setup and configuration steps, making installations time-consuming and less consistent.",
+   achieved=["Developed a Python-based framework to automate application setup, database configuration, certificate management and service initialization",
+             "Standardized application configuration and execution workflows to reduce manual intervention and improve deployment consistency",
+             "Reduced end-to-end installation time from 7 hours to 1 hour, approximately 86% faster",
+             "Implemented validation steps to verify application components and database configuration during installation"],
+   stack=["Python", "Application deployment", "Database configuration", "Certificate management", "Installation validation"],
+   jd="Deployment automation · Configuration consistency · Installation validation · Measurable process improvement",
+   diagram=True),
+ "3 · Predictive Maintenance Data Integration": dict(
+   short="Predictive Maintenance",
+   problem="Industrial equipment telemetry could not reach prediction algorithms reliably.",
+   achieved=["Ingestion pipelines via Kepware + MQTT into Azure Blob Storage",
+             "Connected equipment telemetry to a centralized analytics platform for downstream prediction workflows",
+             "Apache Spark processing, Snowflake storage and analytics",
+             "Adapters integrating vibration-prediction algorithms with the platform"],
+   stack=["Apache Spark", "Snowflake", "Azure", "MQTT", "Python", "Airflow"],
+   jd="Telemetry integration · Spark processing · Predictive-maintenance algorithm integration",
+   diagram=True),
+ "4 · Insurance Claims Data & Reporting (Financial Services)": dict(
    short="Claims Reporting",
    problem="Claims data had gaps, duplicates and inconsistencies, so reports could not be trusted.",
    achieved=["Python + SQL proof of concept to extract, transform and organise claims data",
@@ -204,27 +225,7 @@ projects = {
              "Documented logic and validation rules for traceability"],
    stack=["Python", "SQL", "Validation rules", "Reporting"],
    jd="Finance domain · Controlled, traceable reporting · Requirements to delivery with stakeholders",
-   diagram=True),
- "3 · Predictive Maintenance Data Integration": dict(
-   short="Predictive Maintenance",
-   problem="Industrial equipment telemetry could not reach prediction algorithms reliably.",
-   achieved=["Ingestion pipelines via Kepware + MQTT into Azure Blob Storage",
-             "Up to 90 days of historical data made accessible and validated",
-             "Apache Spark processing, Snowflake storage and analytics",
-             "Adapters integrating vibration-prediction algorithms with the platform"],
-   stack=["Apache Spark", "Snowflake", "Azure", "MQTT", "Python", "Airflow"],
-   jd="Telemetry integration · Spark processing · Predictive-maintenance algorithm integration",
-   diagram=True),
- "4 · Automated Deployment & AI-Assisted Testing": dict(
-   short="DevOps & AI Testing",
-   problem="Manual, inconsistent installs took 7 hours; regressions were caught late.",
-   achieved=["Python framework automating setup, DB config, certificates and services",
-             "Install time cut from 7h to 1h (~86%)",
-             "GitHub Copilot + coding agent for Molecule test automation",
-             "Automated tests wired into GitHub CI/CD"],
-   stack=["Python", "Ansible", "Molecule", "GitHub Actions", "GitHub Copilot"],
-   jd="Platform hygiene & DevOps remediation · CI/CD, environment controls · AI-assisted dev tools",
-   diagram=True),
+   diagram=True)
 }
 
 section("Portfolio", "Selected work", "Project architecture diagrams and concise role alignment.")
@@ -235,138 +236,197 @@ for tab, (name, p) in zip(tabs, projects.items()):
     with tab:
         html(f'<div class="proj-head"><div class="num">{num}</div><div class="proj-title">{title}</div></div>'
              f'<div class="problem"><b>Challenge:</b> {p["problem"]}</div>')
-        with st.container(key=f"card_arch_{num}"):
-            html('<div class="kicker">Solution architecture</div>')
-            diagram_path = DIAGRAM_DIR / DIAGRAM_IMAGES[num]
-            if diagram_path.exists():
-                st.image(str(diagram_path), use_container_width=True)
-            else:
-                st.error(
-                    f"Architecture image not found: {diagram_path.name}. "
-                    "Keep the juhi_architecture_diagrams folder beside this Python file."
-                )
+        if num == "1":
+            st.markdown("### Project summary")
+            st.markdown("Centralized support-ticket, SLA and customer-feedback information into a structured Snowflake analytics environment. Data is prepared and validated before being used for Power BI reporting and an AI-assisted question-answering experience.")
+            st.markdown("**Business value:** a consistent reporting layer, clearer operational KPIs, and a natural-language way to explore approved reporting data.")
+            with st.container(key="card_arch_1"):
+                html('<div class="kicker">Solution architecture · overview</div>')
+                diagram_path = DIAGRAM_DIR / DIAGRAM_IMAGES["1"]
+                if diagram_path.exists():
+                    st.image(str(diagram_path), use_container_width=True)
+                else:
+                    st.error(f"Architecture image not found: {diagram_path.name}")
+            if st.button("Explore detailed architecture ↓", key="explore_project1", type="primary"):
+                st.session_state["show_project1_detail"] = not st.session_state.get("show_project1_detail", False)
+            if st.session_state.get("show_project1_detail", False):
+                st.markdown("#### Detailed data flow")
+                stages = {
+                    "1. Generic source systems": ("Incoming data", "Support tickets, SLA records, customer feedback and team-level operational data from generic source platforms.", "Source extracts or API/file feeds, with source identifiers and event timestamps."),
+                    "2. Ingestion and staging": ("Incoming data", "ETL / ELT jobs collect the source data, retain source context and land it for processing.", "Staged records ready for validation and transformation."),
+                    "3. Raw layer": ("Staged records", "Original records are retained in a raw layer to support traceability and reprocessing.", "Consistent raw tables with ingestion metadata."),
+                    "4. Cleaned layer and quality checks": ("Raw tables", "SQL transformations standardize fields. Python checks identify duplicates, missing values, invalid timestamps and rule violations.", "Validated, standardized datasets plus quality-check results."),
+                    "5. Analytics layer": ("Cleaned datasets", "Business-ready models organize ticket, SLA, resolution and team-performance measures for reporting.", "Curated tables and views for downstream consumption."),
+                    "6. Power BI reporting": ("Analytics tables and views", "Dashboards present ticket volumes, SLA compliance, resolution trends and team performance.", "Operational KPIs and drill-down reporting for stakeholders."),
+                    "7. AI assistant": ("Approved reporting schema and reference documents", "A user asks a question. Retrieval can find relevant policy/reporting context; the assistant generates a read-only SQL query, executes against approved data, and explains the result with supporting references.", "A natural-language answer with query/result context and document references."),
+                }
+                selected_stage = st.radio("Explore a stage", list(stages), key="project1_stage")
+                input_label, process_text, output_text = stages[selected_stage]
+                a, b, c = st.columns(3, gap="medium")
+                with a:
+                    st.markdown("**Input**")
+                    st.info(input_label)
+                with b:
+                    st.markdown("**Processing**")
+                    st.write(process_text)
+                with c:
+                    st.markdown("**Output**")
+                    st.success(output_text)
+                st.markdown("#### Example transformation")
+                st.code("""-- Illustrative SQL only: aggregate ticket performance by month
+SELECT
+    DATE_TRUNC('MONTH', created_at) AS ticket_month,
+    COUNT(*) AS ticket_count,
+    AVG(resolution_hours) AS avg_resolution_hours,
+    100.0 * SUM(CASE WHEN sla_met THEN 1 ELSE 0 END)
+        / NULLIF(COUNT(*), 0) AS sla_compliance_pct
+FROM ANALYTICS.SUPPORT_TICKETS
+GROUP BY 1
+ORDER BY 1;""", language="sql")
+                st.markdown("#### Sample reporting dashboard")
+                m1, m2, m3, m4 = st.columns(4)
+                m1.metric("Tickets", "12,480", "+8.2%")
+                m2.metric("SLA compliance", "94.6%", "+2.1 pp")
+                m3.metric("Avg. resolution", "6.4 hrs", "−0.8 hrs")
+                m4.metric("Open backlog", "1,245", "")
+                demo_df = pd.DataFrame({"Month": ["Jan", "Feb", "Mar", "Apr", "May", "Jun"], "Tickets": [820, 910, 880, 1040, 980, 1150], "SLA met": [92.1, 93.0, 91.8, 94.0, 94.2, 94.6]})
+                dash1, dash2 = st.columns(2, gap="large")
+                with dash1:
+                    fig = px.line(demo_df, x="Month", y="Tickets", markers=True, title="Monthly ticket volume")
+                    st.plotly_chart(style_fig(fig, 300), width="stretch", config={"displayModeBar": False})
+                with dash2:
+                    fig = px.bar(demo_df, x="Month", y="SLA met", title="SLA compliance trend", text_auto=".1f")
+                    fig.update_yaxes(range=[85, 100], title="SLA met (%)")
+                    st.plotly_chart(style_fig(fig, 300), width="stretch", config={"displayModeBar": False})
+                st.markdown("#### AI assistant example")
+                st.markdown("**Question:** Which month had the highest ticket volume, and how did SLA performance compare?")
+                st.success("**Illustrative response:** June had the highest ticket volume in this sample (1,150 tickets). SLA compliance was 94.6%, the highest value in the six-month sample.")
+        else:
+            with st.container(key=f"card_arch_{num}"):
+                html('<div class="kicker">Solution architecture</div>')
+                if num == "2":
+                    diagram_path = DIAGRAM_DIR / DIAGRAM_IMAGES[num]
+                    if diagram_path.exists():
+                        st.image(str(diagram_path), use_container_width=True)
+                    else:
+                        st.error(f"Architecture image not found: {diagram_path.name}")
+                    st.info("Separate follow-on initiative: Molecule lifecycle testing was explored for a different version of the installer. It is not shown as part of this framework or its 7-hour-to-1-hour improvement.")
+                else:
+                    diagram_path = DIAGRAM_DIR / DIAGRAM_IMAGES[num]
+                    if diagram_path.exists():
+                        st.image(str(diagram_path), use_container_width=True)
+                    else:
+                        st.error(f"Architecture image not found: {diagram_path.name}. Keep the juhi_architecture_diagrams folder beside this Python file.")
         with st.expander("Key contributions", expanded=False):
             st.markdown(" · ".join(p["achieved"]))
         if num == "2":
-            st.caption("Proof of concept, not a production financial-services platform.")
-        else:
-            st.caption("Simplified architecture view of the workflow and components described for this project.")
-        if num == "4":
             st.write("")
             with st.container(key="card_install"):
-                fig = go.Figure(go.Bar(x=[7, 1], y=["Before", "After"], orientation="h", text=["7 hours", "1 hour"],
+                fig = go.Figure(go.Bar(x=[7, 1], y=["Previous process", "Automated framework"], orientation="h", text=["7 hours", "1 hour"],
                                        textposition="outside", marker_color=["#CBD5E1", TEAL], width=0.55))
-                fig.update_layout(title="Installation time — 86% faster", xaxis_title="Hours", xaxis_range=[0, 8.2])
+                fig.update_layout(title="Installation time reduced by approximately 86%", xaxis_title="Execution time (hours)", xaxis_range=[0, 8.2])
                 fig.update_yaxes(autorange="reversed", gridcolor="rgba(0,0,0,0)")
                 st.plotly_chart(style_fig(fig, 240), width="stretch", config={"displayModeBar": False})
 
 with tabs[4]:
-    section("JD fit", "Role alignment",
-            "One view of the tools and skills listed in your resume, with suggested self-ratings.")
-
+    section("JD fit", "Role alignment")
     # Single chart covering resume tools and technologies. Axiom and Scala are
     # retained at 1/5 because the user specifically requested those ratings.
     skill_ratings = [
-        ("SQL", 4, "Data engineering"),
-        ("Python", 3, "Data engineering"),
+        ("SQL", 5, "Data engineering"),
+        ("Python", 5, "Data engineering"),
         ("Snowflake", 4, "Data engineering"),
         ("Apache Spark", 3, "Data engineering"),
         ("SQL Server", 4, "Data engineering"),
-        ("PostgreSQL", 3, "Data engineering"),
+        ("PostgreSQL", 4, "Data engineering"),
         ("ETL / ELT", 4, "Data engineering"),
-        ("Data pipelines", 4, "Data engineering"),
-        ("Data modeling", 3, "Data engineering"),
+        ("Data pipelines", 5, "Data engineering"),
+        ("Data modeling", 4, "Data engineering"),
         ("Data quality & validation", 4, "Data engineering"),
         ("Microsoft Azure", 4, "Cloud & integration"),
         ("Azure Blob Storage", 3, "Cloud & integration"),
-        ("Azure VMs", 3, "Cloud & integration"),
-        ("Azure SDK", 3, "Cloud & integration"),
-        ("MQTT", 3, "Cloud & integration"),
+        ("Azure VMs", 4, "Cloud & integration"),
+        ("Azure SDK", 4, "Cloud & integration"),
+        ("MQTT", 4, "Cloud & integration"),
         ("Kepware", 3, "Cloud & integration"),
         ("ThingWorx", 3, "Cloud & integration"),
-        ("APIs", 3, "Cloud & integration"),
+        ("APIs", 5, "Cloud & integration"),
         ("Apache Airflow", 3, "Cloud & orchestration"),
         ("Power BI", 4, "Reporting & analytics"),
         ("KPI / SLA reporting", 4, "Reporting & analytics"),
         ("Git", 4, "DevOps & testing"),
         ("GitHub", 4, "DevOps & testing"),
-        ("GitHub Actions", 3, "DevOps & testing"),
-        ("CI/CD", 3, "DevOps & testing"),
-        ("Docker", 3, "DevOps & testing"),
+        ("GitHub Actions", 5, "DevOps & testing"),
+        ("CI/CD", 5, "DevOps & testing"),
+        ("Docker", 4, "DevOps & testing"),
         ("Kubernetes", 3, "DevOps & testing"),
-        ("Ansible", 3, "DevOps & testing"),
-        ("Molecule", 3, "DevOps & testing"),
-        ("Coverity", 2, "DevOps & testing"),
-        ("Black Duck", 2, "DevOps & testing"),
-        ("Jira", 4, "Delivery & collaboration"),
-        ("Confluence", 4, "Delivery & collaboration"),
+        ("Molecule", 4, "DevOps & testing"),
+        ("Coverity", 4, "DevOps & testing"),
+        ("Black Duck", 4, "DevOps & testing"),
+        ("Jira", 5, "Delivery & collaboration"),
+        ("Confluence", 5, "Delivery & collaboration"),
         ("LLM integration", 3, "AI engineering"),
         ("RAG / vector search", 3, "AI engineering"),
-        ("GitHub Copilot", 4, "AI engineering"),
-        ("AI evaluation", 3, "AI engineering"),
+        ("GitHub Copilot", 5, "AI engineering"),
+        ("AI evaluation", 4, "AI engineering"),
         ("Axiom", 1, "JD technologies · limited familiarity"),
         ("Scala", 1, "JD technologies · limited familiarity"),
     ]
+
     chart_df = pd.DataFrame(skill_ratings, columns=["Skill / tool", "Rating", "Area"])
-    area_order = [
-        "AI engineering", "Cloud & integration", "Cloud & orchestration",
-        "Data engineering", "Delivery & collaboration", "DevOps & testing",
-        "JD technologies · limited familiarity", "Reporting & analytics",
-    ]
-    area_colors = {
-        "AI engineering": "#0875D1",
-        "Cloud & integration": "#75C4F5",
-        "Cloud & orchestration": "#F04444",
-        "Data engineering": "#F5A0A0",
-        "Delivery & collaboration": "#22B8A5",
-        "DevOps & testing": "#69E99A",
-        "JD technologies · limited familiarity": "#FF8A00",
-        "Reporting & analytics": "#FFD166",
-    }
-    area_rank = {name: index for index, name in enumerate(area_order)}
-    sorted_df = chart_df.assign(_area_order=chart_df["Area"].map(area_rank)).sort_values(
-        ["_area_order", "Rating", "Skill / tool"], ascending=[True, True, True]
-    ).drop(columns="_area_order")
 
-    # Chart on the left, category key in a separate card on the right.
-    chart_col, legend_col = st.columns([3.7, 1.35], gap="large")
+    # Sort highest rating first
+    sorted_df = chart_df.sort_values(
+        by=["Rating", "Skill / tool"],
+        ascending=[True, True],
+        kind="stable"
+    ).reset_index(drop=True)
+
+    # Display a single-colour chart
     chart_height = max(760, 28 * len(sorted_df) + 100)
-    with chart_col:
-        fig = px.bar(
-            sorted_df, x="Rating", y="Skill / tool", color="Area", orientation="h",
-            text=sorted_df["Rating"].map(lambda value: f"{value}/5"),
-            hover_data={"Area": True, "Rating": True, "Skill / tool": True},
-            category_orders={
-                "Skill / tool": sorted_df["Skill / tool"].tolist(),
-                "Area": area_order,
-            },
-            color_discrete_map=area_colors,
-        )
-        fig.update_layout(
+
+    fig = px.bar(
+        sorted_df,
+        x="Rating",
+        y="Skill / tool",
+        orientation="h",
+        text=sorted_df["Rating"].map(lambda value: f"{value}/5"),
+        category_orders={
+            "Skill / tool": sorted_df["Skill / tool"].tolist()
+        }
+    )
+
+    fig.update_traces(
+        marker_color="#5493D1",
+        textposition="outside",
+        cliponaxis=False,
+        marker_line_width=0
+    )
+
+    fig.update_layout(
+        title=None,
+        xaxis=dict(
+            range=[0, 5.6],
+            tickvals=[1, 2, 3, 4, 5],
+            title="Rating out of 5"
+        ),
+        yaxis=dict(
             title=None,
-            xaxis=dict(range=[0, 5.6], tickvals=[1, 2, 3, 4, 5], title="Rating out of 5"),
-            yaxis=dict(title=None, autorange="reversed", tickfont=dict(size=11)),
-            height=chart_height, showlegend=False,
-            margin=dict(l=8, r=42, t=12, b=38), bargap=0.28,
-        )
-        fig.update_traces(textposition="outside", cliponaxis=False, marker_line_width=0)
-        st.plotly_chart(
-            style_fig(fig, chart_height), width="stretch",
-            config={"displayModeBar": False},
-        )
+            autorange="reversed",
+            tickfont=dict(
+                size=12,
+                color="#26364B",
+                family="Arial"
+            )
+        ),
+        height=chart_height,
+        showlegend=False,
+        margin=dict(l=8, r=42, t=12, b=38),
+        bargap=0.28
+    )
 
-    with legend_col:
-        legend_items = "".join(
-            f'<div class="skill-legend-item"><span class="skill-legend-swatch" style="background:{area_colors[area]}"></span><span>{area}</span></div>'
-            for area in area_order
-        )
-        html(f"""
-        <div class="skill-legend-card">
-          <div class="skill-legend-title">Skill Categories</div>
-          {legend_items}
-        </div>
-        """)
-
-
-
-html('<div class="foot">Juhi Ajmera · Built in Python + Streamlit</div>')
+    st.plotly_chart(
+        style_fig(fig, chart_height),
+        width="stretch",
+        config={"displayModeBar": False}
+    )
