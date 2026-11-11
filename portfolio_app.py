@@ -137,9 +137,9 @@ ul.checks li:before{content:"✓";background:none;box-shadow:none;color:#0F766E;
 
 # ---------------------------------------------------------------- Hero + KPIs
 html("""<div class="hero">
-<div class="eyebrow">INTERVIEW PORTFOLIO · DATA ENGINEERING, REPORTING & AI</div>
+<div class="eyebrow">INTERVIEW PORTFOLIO · Forward Deployed Engineer | AI Automation, Data Engineering & Integrations</div>
 <div class="hero-name">Juhi Ajmera</div>
-<div class="hero-role">Technical Lead — Data Engineering &amp; Reporting</div>
+<div class="hero-role">Technical Lead — Forward Deployed Engineer</div>
 <div class="hero-tags"><span>Python</span><span>SQL</span><span>Snowflake</span><span>Spark</span><span>Power BI</span><span>Azure</span><span>Airflow</span><span>CI/CD</span><span>LLM</span><span>GitHub Copilot</span></div>
 </div>
 <div class="kpis">
@@ -185,8 +185,8 @@ DIAGRAM_IMAGES = {
 }
 
 projects = {
- "1 · Snowflake + Power BI + AI Reporting": dict(
-   short="Snowflake + AI Reporting",
+ "1 · AI-Powered Data Intelligence and Knowledge Retrieval Platform": dict(
+   short="Data intelligence Platform",
    problem="Support, SLA and feedback data sat in separate systems with unreliable quality.",
    achieved=["ETL/ELT into Snowflake (raw → cleaned → analytics layers)",
              "Python data-quality checks: duplicates, missing values, timestamps, business rules",
