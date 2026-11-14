@@ -137,7 +137,7 @@ ul.checks li:before{content:"✓";background:none;box-shadow:none;color:#0F766E;
 
 # ---------------------------------------------------------------- Hero + KPIs
 html("""<div class="hero">
-<div class="eyebrow">INTERVIEW PORTFOLIO · AI Automation, Data Engineering & Integrations</div>
+<div class="eyebrow">INTERVIEW PORTFOLIO · Forward Deployed Engineer | AI Automation, Data Engineering & Integrations</div>
 <div class="hero-name">Juhi Ajmera</div>
 <div class="hero-role">Technical Lead — Forward Deployed Engineer</div>
 <div class="hero-tags"><span>Python</span><span>SQL</span><span>Snowflake</span><span>Spark</span><span>Power BI</span><span>Azure</span><span>Airflow</span><span>CI/CD</span><span>LLM</span><span>GitHub Copilot</span></div>
@@ -157,8 +157,8 @@ s1, s2 = st.columns([1.08, 1], gap="large")
 with s1:
     html("""<div class="card profile-card profile-summary">
       <div class="kicker">Professional profile</div>
-      <div class="summary-lead">Building practical automation and AI solutions that solve real engineering and business problems.</div>
-      <div class="summary-copy">I am a Technical Lead with over 10 years of experience in software engineering, data integration, automation and analytics. I work across the engineering lifecycle, from understanding business requirements and designing technical solutions to building integrations, automating workflows and validating outcomes.</div>
+      <div class="summary-lead">Turning complex data into reliable business insights.</div>
+      <div class="summary-copy">Building data pipelines, integrations, analytics and reporting solutions, with a focus on quality, automation and applied AI.</div>
     </div>""")
 with s2:
     html("""<div class="card profile-card profile-cert">
@@ -186,7 +186,7 @@ DIAGRAM_IMAGES = {
 
 projects = {
  "1 · AI-Powered Data Intelligence and Knowledge Retrieval Platform": dict(
-   short="Data intelligence Platform",
+   short="Snowflake + AI Reporting",
    problem="Support, SLA and feedback data sat in separate systems with unreliable quality.",
    achieved=["ETL/ELT into Snowflake (raw → cleaned → analytics layers)",
              "Python data-quality checks: duplicates, missing values, timestamps, business rules",
